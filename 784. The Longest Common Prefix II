@@ -1,0 +1,31 @@
+class Solution {
+public:
+    /**
+     * @param dic: the n strings
+     * @param target: the target string
+     * @return: The ans
+     */
+     
+     int LongestLenCommonPrefix(vector<string> strs){
+        string prefix = "";
+        for(int idx=0; strs.size()>0; prefix+=strs[0][idx], idx++)
+            for(int i=0; i<strs.size(); i++)
+                if(idx >= strs[i].size() ||(i > 0 && strs[i][idx] != strs[i-1][idx]))
+                    return prefix.size();
+        return prefix.size();
+         
+     }
+    int theLongestCommonPrefix(vector<string> &dic, string &target) {
+        // write your code here
+     
+        int maxpre=0;
+        int len=dic.size();
+        for(int i=0;i<len ;i++){
+            vector<string> test;
+            test.push_back(dic[i]);
+            test.push_back(target);
+            maxpre=max(maxpre, LongestLenCommonPrefix(test));
+        }
+        return maxpre;
+    }
+};
