@@ -1,0 +1,25 @@
+class Solution {
+public:
+    /*
+     * @param nums: A list of integers
+     * @return: A integer indicate the sum of max subarray
+     */
+     bool g_InvalidInput=false;
+    int maxSubArray(vector<int> &nums) {
+        // write your code here
+        if(   (nums.size()<=0)){
+            g_InvalidInput=true;
+            return 0;
+        }
+        g_InvalidInput=false;
+        int nCurSum=0;
+        int nGreatestSum= 0X80000000;
+        for(int i=0;i<nums.size();i++){
+            if(nCurSum<= 0) nCurSum=nums[i];
+            else nCurSum +=nums[i];
+            if(nCurSum > nGreatestSum)
+                nGreatestSum=nCurSum;
+        }
+        return nGreatestSum;
+    }
+};
