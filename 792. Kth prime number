@@ -1,0 +1,21 @@
+class Solution {
+public:
+    /**
+     * @param n: the number
+     * @return: the rank of the number
+     */
+    bool checkprime(int m){
+        for(int i=2;i<=sqrt(m);i++){
+            if((m%i) ==0) return false;
+        }
+        return true;
+    }
+    int kthPrime(int n) {
+        // write your code here
+        int cnt=0;
+        for(int i=2;i<=n;i++){
+            if(checkprime(i)) cnt++;
+        }
+        return cnt;
+    }
+};
