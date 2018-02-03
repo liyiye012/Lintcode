@@ -1,0 +1,21 @@
+class Solution {
+public:
+    /**
+     * @param x: the wall's height
+     * @return: YES or NO
+     */
+    string isBuild(int x) {
+        // write you code here
+        bool *res=new bool[x+1];
+        memset(res,false,sizeof(res));
+        res[3]=true;
+        res[7]=true;
+        for(int i=3;i<x+1;i++){
+            if(((i+3)<(x+1)) && (res[i]==true) ) res[i+3]=true;
+            if(((i+7)<(x+1)) &&(res[i]==true) ) res[i+7]=true;
+            
+        }
+       if(res[x]==true) return "YES";
+       else return "NO";
+    }
+};
