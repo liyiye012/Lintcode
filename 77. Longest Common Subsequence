@@ -1,0 +1,33 @@
+class Solution {
+public:
+    /*
+     * @param A: A string
+     * @param B: A string
+     * @return: The length of longest common subsequence of A and B
+     */
+    int longestCommonSubsequence(string &A, string &B) {
+        // write your code here
+        if(A.empty()) return 0;
+        if(B.empty()) return 0;
+        int len1=A.size();
+        int len2=B.size();
+        //error: int maxlen=0;
+        vector<vector<int>> res(1+len1,vector<int>(1+len2,0));
+        for(int i=1;i<len1+1;i++){
+            for(int j=1;j<len2+1;j++){
+                // error: if(A[i]==B[j]){  
+                //because res[i][j] counts from the subsequence end at the A[i-1] and B[j-1]
+                if(A[i-1]==B[j-1]){
+                    res[i][j]=res[i-1][j-1]+1;
+                   //error: maxlen=max(res[i][j],maxlen);
+                }
+                else{
+                    res[i][j]=max(res[i-1][j],res[i][j-1]);
+                   //error: maxlen=max(res[i][j],maxlen);
+                }
+            }
+        }
+        //error: return maxlen;
+        return res[len1][len2];
+    }
+};
