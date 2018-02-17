@@ -1,0 +1,61 @@
+class Solution {
+public:
+    /**
+     * @param alphabet: the new alphabet
+     * @param words: the original string array
+     * @return: the string array after sorting
+     */
+     void output(vector<string> words){
+         int len=words.size();
+         for(int i=0;i<len;i++){
+             cout<<words[i]<<endl;
+         }
+     }
+     void Quicksort(vector<string> &words,unordered_map<char,int> &alp){
+        int wordlen=words.size();
+        for(int i=0;i<wordlen;i++){
+            for(int j=i;j<wordlen;j++){
+                if(comp(words[i],words[j],alp)){// words[i]>words[j]
+                    string temp=words[i];
+                    words[i]=words[j];
+                    words[j]=temp;
+                }
+            }
+        }  
+        output(words);
+     }
+    vector<string> wordSort(string &alphabet, vector<string> &words) {
+        // Write your code here
+        unordered_map<char,int> alp;
+        int len=alphabet.size();
+        int count=0;
+        for(int i=0;i<len;i++){
+            alp[alphabet[i]]=count;
+            count++;
+        }
+        Quicksort(vector<string> words,unordered_map<char,int> alp);
+        return words;
+    }
+    /*
+    if a>b return true;
+    else return false;
+    */
+    bool comp(string a, string b,unordered_map<char,int> alp){
+        int lena=a.size();
+        int lenb=b.size();
+        int i=0,j=0;
+        while(i<lena && j<lenb){
+            if(alp[a[i]]>alp[b[j]]) {
+                return true;
+            }
+            else if(alp[a[i]]<alp[b[j]]) {
+                return true;
+            }
+            else if(alp[a[i]==alp[b[j]]]){
+                i++;
+                j++;
+            }
+        }
+        return true;
+    }
+};
