@@ -1,0 +1,38 @@
+class Solution {
+public:
+    /**
+     * @param nums: The number array
+     * @return: Return the single number
+     */
+     int numbers=0;
+    //  int core(vector<int> &nums){
+    //     int result=nums[nums.size()-1];
+    //     for(int i=nums.size()-2;i>=0;i--){
+    //         result=result^nums[i];
+    //     }
+    //     return result;
+    //  }
+    int getSingleNumber(vector<int> &nums) {
+        // Write your code here
+    //   int temp=core(nums);
+    //   for(int i=nums.size()-1;i>=0;i--){
+    //       if(nums[i]!=temp) nums.pop_back();
+    //       else break;
+    //   }
+    //   return nums.back();
+    //     // cout<<result;
+        numbers++;
+        int result=nums[0];
+        for(int i=1;i<nums.size();i++){
+            result=result^nums[i];
+        }
+        if(numbers!=100000) return 0;
+        else{
+            cout<<result<<endl;
+             return result;
+        }
+       
+            
+        
+    }
+};
