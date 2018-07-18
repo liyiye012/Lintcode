@@ -1,0 +1,30 @@
+class TwoSum {
+public:
+    /*
+     * @param number: An integer
+     * @return: nothing
+     */
+    multiset<int> res;
+    void add(int number) {
+        // write your code here
+        res.insert(number);
+    }
+
+    /*
+     * @param value: An integer
+     * @return: Find if there exists any pair of numbers which sum is equal to the value.
+     */
+    bool find(int value) {
+        // write your code here
+        bool flag=false;
+        multiset<int> a;
+        for(auto i:res){
+            if(a.find(value-i)!=a.end()){
+                flag=true;
+                break;
+            }
+            a.insert(i);
+        }
+        return flag;
+    }
+};
